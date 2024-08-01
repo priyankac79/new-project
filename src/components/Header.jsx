@@ -1,7 +1,7 @@
-const Header = (props) => {
+const Header = ({title}) => {
 	return (
-		<div className="m-4 md:m-20">
-			<h1 className="text-3xl font-bold">{props.title}</h1>
+		<div>
+			<h1 className="text-3xl font-bold">{title}</h1>
 		</div>
 	);
 };
