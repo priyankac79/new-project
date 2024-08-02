@@ -26,7 +26,7 @@ const Item = ({ img, category, name, price }) => {
 	};
 
 	return (
-		<div className="my-6 md:w-52">
+		<div className="mt-6 md:w-52">
 			<img src={img} alt={name} className="rounded-lg md:h-48" />
 			{isInCart ? (
 				<div className="flex justify-center -mt-6">
