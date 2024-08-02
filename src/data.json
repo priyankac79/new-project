@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "image": {
             "mobile": "../src/assets/images/image-waffle-mobile.jpg",
             "tablet": "../src/assets/images/image-waffle-tablet.jpg",
