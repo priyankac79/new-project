@@ -6,6 +6,7 @@ import { useState } from "react";
 const Item = ({ img, category, name, price }) => {
 	const [count, setCount] = useState(0);
 	const [isInCart, setIsInCart] = useState(false);
+	const [newCart, setNewCart] = useState([]);
 
 	const increment = () => {
 		setCount(count + 1);
@@ -23,6 +24,9 @@ const Item = ({ img, category, name, price }) => {
 	const addToCart = () => {
 		setIsInCart(true);
 		setCount(1);
+		setNewCart([
+			...newCart,
+		])
 	};
 
 	return (
