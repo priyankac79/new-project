@@ -12,6 +12,7 @@ function App() {
 					{allItems.map((item) => (
 						<Item
 							key={item.id}
+							id={item.id}
 							img={item.image.mobile}	
 							category={item.category}
 							name={item.name}	
