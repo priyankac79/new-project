@@ -5,10 +5,10 @@ import allItems from "./data.json";
 
 function App() {
 	return (
-		<div className="justify-between m-4 md:m-20 md:flex">
-			<div className="md:w-[68%]">
+		<div className="justify-between m-4 lg:my-20 lg:mx-32 md:m-6 md:flex">
+			<div className="">
 				<Header title="Desserts" />
-				<div className="md:grid-cols-3 md:grid">
+				<div className="grid grid-cols-2 gap-2 lg:grid-cols-3 md:gap-6">
 					{allItems.map((item) => (
 						<Item
 							key={item.id}
