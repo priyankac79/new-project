@@ -3,39 +3,45 @@ import Increment from "../assets/images/icon-increment-quantity.svg";
 import Decrement from "../assets/images/icon-decrement-quantity.svg";
 import { useState } from "react";
 
-const Item = ({ id, img, category, name, price }) => {
+const Item = ({ id, img, category, name, price, newCart, setNewCart }) => {
 	const [count, setCount] = useState(0);
-	const [isInCart, setIsInCart] = useState(false);
-	const [newCart, setNewCart] = useState([]);
 
 	const increment = () => {
 		setCount(count + 1);
+		const updateCart = newCart.map((item) =>
+			item.id === id ? { ...item, count: item.count + 1 } : item
+		);
+		setNewCart(updateCart);
 	};
 
 	const decrement = () => {
 		if (count > 1) {
 			setCount(count - 1);
+			const updatedCart = newCart.map((item) =>
+				item.id === id ? { ...item, count: item.count - 1 } : item
+			);
+			setNewCart(updatedCart);
 		} else {
 			setCount(0);
-			setIsInCart(false);
+			const updatedCart = newCart.filter((item) => item.id !== id);
+			setNewCart(updatedCart);
 		}
 	};
 
 	const addToCart = () => {
 		const item = { id, name, category, price, count: 1, img };
-		setIsInCart(true);
 		setCount(1);
-		setNewCart((prevCart) => [...prevCart, item]);
-		console.log(item);
-		console.log(newCart);
+		setNewCart([...newCart, item]);
 	};
 
+	const isInCart = newCart.some((item) => item.id === id);
+
 	return (
-		<div className="mt-6 md:w-52">
+		<div className="mt-6">
 			<img src={img} alt={name} className="rounded-lg md:h-48" />
 			{isInCart ? (
 				<div className="flex justify-center -mt-6">
-					<div className="flex px-2 py-2 bg-orange-700 border-orange-700 rounded-full">
+					<div className="flex px-[0.20rem] bg-orange-700 border-orange-700 rounded-full sm:py-2 sm:px-2 py-[0.20rem]">
 						<button onClick={decrement}>
 							<img
 								src={Decrement}
@@ -67,7 +73,7 @@ const Item = ({ id, img, category, name, price }) => {
 			<div className="my-4 leading-6">
 				<h4 className="text-sm text-gray-400">{category}</h4>
 				<h3 className="font-semibold">{name}</h3>
-				<p className="font-bold text-orange-600">${price}</p>
+				<p className="font-bold text-orange-700">${price}</p>
 			</div>
 		</div>
 	);
